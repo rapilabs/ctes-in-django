@@ -4,6 +4,8 @@ CTEs in Django?
  - What is a CTE?
  - Example in SQL and Django
  - Is it useful?
+ 
+https://github.com/rapilabs/ctes-in-django
 
 ---
 
