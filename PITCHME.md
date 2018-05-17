@@ -183,4 +183,16 @@ http://sqlfiddle.com/#!15/5bc43/2
 
 https://repl.it/@rapilabs/django-cte
 
+---
 
+Is it actually useful?
+
+ - Self-joining to an aggregation, but that's solvable by DISTINCT ON (another talk)
+ - Readability of SQL is not an issue with ORMs
+ - Composability (not with SQL but maybe aide composing w/ ORM api?)
+ - Schinckel prefers to write view-backed models that uses subquery in the FROM clause
+ - Trees
+
+Limitations:
+
+ - afaik you must have a queryset or model to join the CTE onto
