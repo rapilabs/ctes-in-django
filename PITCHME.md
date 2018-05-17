@@ -3,7 +3,6 @@ What's a CTE?
 
 Essentially it's a "temporary view" that only lasts the length of the query:
 
-sql
 ```
 WITH <view-name> AS (
    SELECT *
@@ -128,30 +127,33 @@ The following slides have been lifted from lides 19-69 of
 Sample Problem
 --------------
 
-    If I had a bunch of users with some activity each day, how can I construct a query
-    to get their last activity object on that day for each of the days?
+    If I had a bunch of users with some activity each day, how can I construct a query to get their last activity object on that day for each of the days?
 
 Consider the following table:
 
-    +—————————————————————————————————————————————————————————————————————————————+
-    |                                 Activity                                    |
-    +-----------------------------------------------------------------------------|
-    |  Who?       |   When?   |    What?                                          |
-    +-------------+-----------+---------------------------------------------------|
-    |  g1eb       |   9am     |    Go to work                                     |
-    |  g1eb       |   5pm     |    Knock-off time!                                |
-    |  shangxiao  |   9am     |    Go to work                                     |
-    |  shangxiao  |   5pm     |    Knock-off time!                                |
-    |  shangxiao  |   6pm     |    Attend MelbDjango                              |
-    +-----------------------------------------------------------------------------+
+```
+ +—————————————————————————————————————————————————————————————————————————————+
+ |                                 Activity                                    |
+ +-----------------------------------------------------------------------------|
+ |  Who?       |   When?   |    What?                                          |
+ +-------------+-----------+---------------------------------------------------|
+ |  g1eb       |   9am     |    Go to work                                     |
+ |  g1eb       |   5pm     |    Knock-off time!                                |
+ |  shangxiao  |   9am     |    Go to work                                     |
+ |  shangxiao  |   5pm     |    Knock-off time!                                |
+ |  shangxiao  |   6pm     |    Attend MelbDjango                              |
+ +-----------------------------------------------------------------------------+
+```
 
 We want to know what each person's final activity is:
 
-    +-----------------------------------------------------------------------------+
-    |  g1eb       |   5pm     |    Knock-off time!                                |
-    |  shangxiao  |   6pm     |    Attend MelbDjango                              |
-    +-----------------------------------------------------------------------------+
-
+```
+ +-----------------------------------------------------------------------------+
+ |  g1eb       |   5pm     |    Knock-off time!                                |
+ |  shangxiao  |   6pm     |    Attend MelbDjango                              |
+ +-----------------------------------------------------------------------------+
+```
+---
 
 http://sqlfiddle.com/#!15/5bc43/2
 
