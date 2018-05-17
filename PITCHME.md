@@ -129,7 +129,7 @@ Sample Problem
 
 from #django IRC channel:
 
-    g1eb: If I had a bunch of users with some activity each day, how can I construct a query to get their last activity object on that day for each of the days?
+    If I had a bunch of users with some activity each day, how can I construct a query to get their last activity object on that day for each of the days?
 
 ---
 
