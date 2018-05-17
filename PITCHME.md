@@ -49,12 +49,12 @@ A Potential Solution
 
 ```
 SELECT *
-    FROM (
-        SELECT who, MAX("when") as max_when
-        FROM activity a
-        GROUP BY who
-    ) as max_times
-    INNER JOIN activity a2 ON a2."when" = max_times.max_when AND a2.who = max_times.wh
+FROM (
+    SELECT who, MAX("when") as max_when
+    FROM activity a
+    GROUP BY who
+) as max_times
+INNER JOIN activity a2 ON a2."when" = max_times.max_when AND a2.who = max_times.wh
 ```
 
 http://sqlfiddle.com/#!15/5bc43/4
@@ -193,15 +193,14 @@ Back to our Sample Problem
 
 ```
 SELECT *
-    FROM (
-        SELECT who, MAX("when") as max_when
-        FROM activity a
-        GROUP BY who
-    ) as max_times
-    INNER JOIN activity a2 ON a2."when" = max_times.max_when AND a2.who = max_times.wh
+FROM (
+    SELECT who, MAX("when") as max_when
+    FROM activity a
+    GROUP BY who
+) as max_times
+INNER JOIN activity a2 ON a2."when" = max_times.max_when AND a2.who = max_times.wh
 ```
 
-http://sqlfiddle.com/#!15/5bc43/4
 
 ```
 WITH max_times AS (
@@ -213,6 +212,8 @@ WITH max_times AS (
 SELECT * FROM activity a
 INNER JOIN max_times m ON m.who = a.who AND m.max_when = a.when
 ```
+
+http://sqlfiddle.com/#!15/5bc43/2
 
 ```
  # assume that Activity's manager is an instance of CTEManager
