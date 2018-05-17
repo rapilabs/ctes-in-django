@@ -157,7 +157,29 @@ We want to know what each person's final activity is:
 ```
 ---
 
+```
+WITH max_times AS (
+  SELECT who, max("when") AS max_when
+  FROM activity
+  GROUP BY who
+)
+
+SELECT * FROM activity a
+INNER JOIN max_times m ON m.who = a.who AND m.max_when = a.when
+```
 http://sqlfiddle.com/#!15/5bc43/2
+
+---
+
+```
+ # assume that Activity's manager is an instance of CTEManager
+ max_when = Activity.objects \
+     .values('who') \
+     .annotate(max_when=Max('when')) \
+     .values('who', 'max_when')
+ cte = With(max_when)
+ cte.join(Activity, who=cte.col.who, when=cte.col.max_when).with_cte(cte)
+```
 
 https://repl.it/@rapilabs/django-cte
 
