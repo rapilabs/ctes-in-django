@@ -9,6 +9,58 @@ https://github.com/rapilabs/ctes-in-django
 
 ---
 
+Sample Problem
+--------------
+
+from #django IRC channel:
+
+    If I had a bunch of users with some activity each day, how can I construct a query to get their last activity object on that day for each of the days?
+
+---
+
+Consider the following table:
+
+```
+ +—————————————————————————————————————————————————————————————————————————————+
+ |                                 Activity                                    |
+ +-----------------------------------------------------------------------------|
+ |  Who?       |   When?   |    What?                                          |
+ +-------------+-----------+---------------------------------------------------|
+ |  g1eb       |   9am     |    Go to work                                     |
+ |  g1eb       |   5pm     |    Knock-off time!                                |
+ |  shangxiao  |   9am     |    Go to work                                     |
+ |  shangxiao  |   5pm     |    Knock-off time!                                |
+ |  shangxiao  |   6pm     |    Attend MelbDjango                              |
+ +-----------------------------------------------------------------------------+
+```
+
+We want to know what each person's final activity is:
+
+```
+ +-----------------------------------------------------------------------------+
+ |  g1eb       |   5pm     |    Knock-off time!                                |
+ |  shangxiao  |   6pm     |    Attend MelbDjango                              |
+ +-----------------------------------------------------------------------------+
+```
+---
+
+A Potential Solution
+--------------------
+
+```
+SELECT *
+    FROM (
+        SELECT who, MAX("when") as max_when
+        FROM activity a
+        GROUP BY who
+    ) as max_times
+    INNER JOIN activity a2 ON a2."when" = max_times.max_when AND a2.who = max_times.wh
+```
+
+But not in Django…
+
+---
+
 What's a CTE?
 -------------
 
@@ -134,41 +186,22 @@ The following slides have been lifted from slides 19-69 of
 ![](https://image.slidesharecdn.com/modernsqlinpostgresql-150130134147-conversion-gate01/95/modern-sql-in-open-source-and-commercial-databases-69-1024.jpg)
 ---
 
-
-Sample Problem
---------------
-
-from #django IRC channel:
+Back to our Sample Problem
+--------------------------
 
     If I had a bunch of users with some activity each day, how can I construct a query to get their last activity object on that day for each of the days?
 
----
-
-Consider the following table:
-
 ```
- +—————————————————————————————————————————————————————————————————————————————+
- |                                 Activity                                    |
- +-----------------------------------------------------------------------------|
- |  Who?       |   When?   |    What?                                          |
- +-------------+-----------+---------------------------------------------------|
- |  g1eb       |   9am     |    Go to work                                     |
- |  g1eb       |   5pm     |    Knock-off time!                                |
- |  shangxiao  |   9am     |    Go to work                                     |
- |  shangxiao  |   5pm     |    Knock-off time!                                |
- |  shangxiao  |   6pm     |    Attend MelbDjango                              |
- +-----------------------------------------------------------------------------+
+SELECT *
+    FROM (
+        SELECT who, MAX("when") as max_when
+        FROM activity a
+        GROUP BY who
+    ) as max_times
+    INNER JOIN activity a2 ON a2."when" = max_times.max_when AND a2.who = max_times.wh
 ```
 
-We want to know what each person's final activity is:
-
-```
- +-----------------------------------------------------------------------------+
- |  g1eb       |   5pm     |    Knock-off time!                                |
- |  shangxiao  |   6pm     |    Attend MelbDjango                              |
- +-----------------------------------------------------------------------------+
-```
----
+http://sqlfiddle.com/#!15/5bc43/4
 
 ```
 WITH max_times AS (
