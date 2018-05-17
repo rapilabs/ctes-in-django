@@ -189,8 +189,6 @@ The following slides have been lifted from slides 19-69 of
 Back to our Sample Problem
 --------------------------
 
-    If I had a bunch of users with some activity each day, how can I construct a query to get their last activity object on that day for each of the days?
-
 ```
 SELECT *
     FROM (
