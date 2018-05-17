@@ -1,7 +1,7 @@
 CTEs in Django?
 ---------------
 
- - What is a CTE?
+ - What is a CTE?  (I stole some slides)
  - Example in SQL and Django
  - Is it useful?
  
