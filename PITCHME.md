@@ -20,7 +20,7 @@ The following slides have been lifted from slides 19-69 of
 
 ---
 
-![](https://image.slidesharecdn.com/modernsqlinpostgresql-150130134147-conversion-gate01/95/modern-sql-in-open-source-and-commercial-databases-19-638.jpg?cb=1488960007)
+![](https://image.slidesharecdn.com/modernsqlinpostgresql-150130134147-conversion-gate01/95/modern-sql-in-open-source-and-commercial-databases-19-1024.jpg)
 ---
 ![](https://image.slidesharecdn.com/modernsqlinpostgresql-150130134147-conversion-gate01/95/modern-sql-in-open-source-and-commercial-databases-20-638.jpg?cb=1488960007)
 ---
