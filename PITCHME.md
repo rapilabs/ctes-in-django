@@ -169,8 +169,6 @@ INNER JOIN max_times m ON m.who = a.who AND m.max_when = a.when
 ```
 http://sqlfiddle.com/#!15/5bc43/2
 
----
-
 ```
  # assume that Activity's manager is an instance of CTEManager
  max_when = Activity.objects \
