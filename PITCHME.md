@@ -15,7 +15,7 @@ FROM <view-name>
 
 ---
 
-The following slides have been lifted from lides 19-69 of 
+The following slides have been lifted from slides 19-69 of 
 [Markus Winand's "Modern SQL"](https://www.slideshare.net/MarkusWinand/modern-sql):
 
 ---
